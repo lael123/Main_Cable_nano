@@ -87,7 +87,7 @@ void WaterScan_Callback(void *parameter)
                 Peak_Loss_Level = 1;
             }
         }
-        if (Get_Peak_LOSS_Level() == 0)
+        else if (Get_Peak_LOSS_Level() == 0)
         {
             rt_thread_mdelay(50);
             if (Get_Peak_LOSS_Level() == 0)
@@ -103,7 +103,7 @@ void WaterScan_Callback(void *parameter)
                 Peak_ON_Level = 1;
             }
         }
-        if (Get_Peak_ON_Level() == 0)
+        else if (Get_Peak_ON_Level() == 0)
         {
             rt_thread_mdelay(50);
             if (Get_Peak_ON_Level() == 0)

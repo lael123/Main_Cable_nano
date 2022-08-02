@@ -34,7 +34,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *RtcHandle)
     sTime.StoreOperation = RTC_STOREOPERATION_RESET;
     HAL_RTC_SetTime(RtcHandle, &sTime, RTC_FORMAT_BIN);
 
-    if(RTC_Hours%1 == 0)
+    if(RTC_Hours%120 == 0)
     {
         RTC_Hours++;
     }

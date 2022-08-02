@@ -116,6 +116,9 @@ void WaterScan_Callback(void *parameter)
                 WarningNowStatus=0;//状态正常
             }
         }
+        
+        
+        
         if(WarningNowStatus != WarningPastStatus)
         {
             if(WarningPastStatus==2 && WarningNowStatus==0)

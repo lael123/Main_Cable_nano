@@ -10,7 +10,7 @@
 #include "rtthread.h"
 #include "stm32g0xx.h"
 
-uint32_t RTC_Hours;
+uint32_t RTC_Hours = 1 ;
 
 RTC_HandleTypeDef hrtc;
 
@@ -34,14 +34,14 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *RtcHandle)
     sTime.StoreOperation = RTC_STOREOPERATION_RESET;
     HAL_RTC_SetTime(RtcHandle, &sTime, RTC_FORMAT_BIN);
 
-    if(RTC_Hours%120 == 0)
+    if(RTC_Hours % 20 == 0 )
     {
-        RTC_Hours++;
+        RTC_Hours = 1;
+        Moto_Detect();
     }
     else
     {
-        RTC_Hours = 0;
-        Moto_Detect();
+        RTC_Hours++;
     }
 }
 void RTC_Init(void)
@@ -103,9 +103,9 @@ void RTC_Init(void)
 
     /** Enable the Alarm A
     */
-    sAlarm.AlarmTime.Hours = 1;
+    sAlarm.AlarmTime.Hours = 0;
     sAlarm.AlarmTime.Minutes = 0;
-    sAlarm.AlarmTime.Seconds = 0;
+    sAlarm.AlarmTime.Seconds = 1;
     sAlarm.AlarmTime.SubSeconds = 0x0;
     sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
     sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
